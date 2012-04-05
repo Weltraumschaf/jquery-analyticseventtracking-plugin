@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame 
+			 Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<title>jQuery Google Analytics Event Tracking Plugin</title>
+		<meta name="description" content="" />
+		<meta name="generator" content="Studio 3 http://aptana.com/" />
+		<meta name="author" content="Joakim Westerlund" />
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<!--		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>-->
+		<script src="jquery.analyticseventtracking.js"></script>
+		<script type="text/javascript">//<![CDATA[
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount','UA-9617079-5']);
+			_gaq.push(['_trackPageview']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+			//]]>
+		</script>
+		<style>
+			body{
+				margin:40px;
+				font:13px/1.5 Arial,'Liberation Sans',FreeSans,sans-serif;
+			}
+			#container{
+				width:100%;
+				margin:0 auto;
+
+			}
+			#tracked{
+				padding:10px;
+				background:#f1f1f1;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<header>
+				<h1 data-sc-category="Startseite" data-sc-action="Überschrift angeklickt" data-sc-label="Überschrift">Demo of Google Event Tracking jQuery Plugin</h1>
+			</header>
+			<nav>
+				<p><a href="javascript:;" data-sc-category="Startseite" data-sc-action="Link angeklickt" data-sc-label="Startseite">Home</a></p>
+				<p><a href="javascript:;" data-sc-category="Startseite" data-sc-action="Link angeklickt" data-sc-label="Blog">Blog</a></p>
+			</nav>
+
+			<div>
+				<p>
+					<a href="javascript:;" data-sc-category="Startseite" data-sc-action="verlinktes Bild angeklickt" data-sc-label="Spezial">
+						<img src="http://i.kw.cx/upf/5019692_144052451.jpg"/>
+					</a>
+				</p>
+			</div>
+			
+			<div id="tracked" data-sc-action="Div angeklickt" data-sc-label="Spezial" data-sc-value="3">
+				<p>
+					This is a special click <strong>div#tracked</strong> with specified values...
+				</p>
+			</div>
+			<footer>
+				<p>2011 by <a href="javascript:;" data-sc-category="Startseite" data-sc-action="Link angeklickt" data-sc-label="Autor">Joakim Westerlund</a></p>
+			</footer>
+		</div>
+		<script type="text/javascript">
+		/* <![CDATA[ */
+		(function($){
+			_gaq.push([
+				'_setCustomVar',
+				1,              // This custom var is set to slot #1.  Required parameter.
+				'Section',      // The top-level name for your online content categories.  Required parameter.
+				'Life & Style',	// Sets the value of "Section" to "Life & Style" for this particular aricle.  Required parameter.
+				2               // Sets the scope to page-level.  Optional parameter.
+			]);
+			
+//			$(function() {
+//				// setting custom data attribute names
+//				$.analyticsEventTracking({
+//					category:	"sc-category",
+//					action:		"sc-action",
+//					label:		"sc-label",
+//					value:		"sc-value"
+//				});
+//				$("body").click(function(event) {
+//					var $target  = $(event.target),
+//						selector = "[data-sc-category], [data-sc-action], [data-sc-label], [data-sc-value]",
+//						$tracked = $target.filter(selector);
+//
+//					if ($tracked.size() === 0) {
+//						/* If the clicked element itself is not tracked, may be a parent
+//						 * node is tracked.
+//						 */
+//						$tracked = $target.parents(selector);
+//					}
+//
+//					if ($tracked.size() > 0) {
+//						$tracked.analyticsTrackEvent({
+//							/* By default we use document.logPage (the controller route)
+//							 * as category. But its possible to overide it per tag with
+//							 * the attribute data-sc-cetegory.					 *
+//							 */
+//							category: $tracked.data("sc-category") || document.logPage
+//						});
+//					}
+//				});
+//			});
+		}(jQuery));
+		/* ]]> */
+		</script>
+	</body>
+</html>
